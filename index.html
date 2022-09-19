@@ -1,38 +1,145 @@
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Century of birth</title>
-  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body {
+      height: 100vh;
+      width: 100%;
+      align-items: center;
+      background: linear-gradient(to top left, #00eaff, #ff69de, #ffcf40);
+    }
+
+    .description {
+      margin-top: 150px;
+      font-family: sans-serif;
+      font-size: 20px;
+      min-width: 700px;
+      width: 100%;
+      text-align: center;
+      color: rgb(0, 0, 0);
+    }
+
+    .input {
+      margin-top: 75px;
+      width: 100%;
+      min-width: 700px;
+      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      color: rgb(0, 0, 0);
+      font-family: sans-serif;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .name,
+    .yearofbirth,
+    .submit {
+      padding: 0 10px;
+    }
+
+    button {
+      border-radius: 5px;
+      border: 0;
+      width: 100px;
+      height: 30px;
+      font-family: sans-serif;
+      font-size: 15px;
+      background: #5ffaffa6;
+    }
+
+    button:hover {
+      background: #fffd76a6;
+      transition-duration: 0.5s;
+    }
+
+    button:active {
+      background: #fffd76a6;
+    }
+
+    input[type=text] {
+      border-radius: 5px;
+      border: 0;
+      width: 150px;
+      height: 30px;
+      font-family: sans-serif;
+      font-size: 15px;
+      background: #ffffff74;
+    }
+
+    .result {
+      margin-top: 75px;
+      font-family: sans-serif;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+    }
+
+  </style>
+
 </head>
 
 <body>
 
-  <!--<div class="description">
+  <div class="description">
     <h1>Calculate century of birth below</h1>
   </div>
 
   <div class="input">
     <div class="name">
       <label for="personsname">Name:</label>
-      <input type="text" maxlength="20" minlength="2" id="personsname" name="personsname"><br><br>
+      <input type="text" maxlength="20" id="personsname" name="personsname"><br><br>
     </div>
     <div class="yearofbirth">
       <label for="yearofbirth">Year of birth:</label>
-      <input type="text" maxlength="4" minlength="4" id="yearofbirth" name="yearofbirth" /><br><br>
+      <input type="text" maxlength="5" id="yearofbirth" name="yearofbirth" /><br><br>
     </div>
+
     <div class="submit">
-      <input type="submit" value="Calculate">
+      <button onclick="calc()">Calculate</button>
     </div>
-  </div>
+
   </div>
 
-  <div class="result">
-    was born in
   </div>
-   -->
-  <script src="calculatingCenturyOfBirth.js">
-    console.log(centuryOfBirth)</script>
 
+  <div class="result" id="result">
+
+  </div>
+
+  <script>
+
+    function calc () {
+      const personsName = document.getElementById('personsname').value;
+      const yearOfBirth = document.getElementById('yearofbirth').value;
+
+      if (personsName.length > 1) {
+        if (yearOfBirth > 0) {
+          let centuryOfBirth = (Math.floor((yearOfBirth - 1) / 100)) + 1;
+
+          document.getElementById("result").innerHTML = personsName + " was born in " + centuryOfBirth + " century.";
+        }
+
+        else if (yearOfBirth === "0") {
+          document.getElementById("result").innerHTML = personsName + " was born in 1 century.";
+        }
+
+        else if (yearOfBirth < 0) {
+          let centuryOfBirth = (Math.floor((yearOfBirth - 100) / 100)) + 1;
+          document.getElementById("result").innerHTML = personsName + " was born in " + centuryOfBirth + " century.";
+        }
+
+        else {
+          document.getElementById("result").innerHTML = "Year of birth should be a number";
+        }
+      }
+      else { document.getElementById("result").innerHTML = "Name is too short."; }
+    }
+
+  </script>
 </body>
 
 </html>
