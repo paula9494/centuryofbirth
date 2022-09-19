@@ -120,20 +120,20 @@
         if (yearOfBirth > 0) {
           let centuryOfBirth = (Math.floor((yearOfBirth - 1) / 100)) + 1;
 
-          document.getElementById("result").innerHTML = personsName + " was born in " + centuryOfBirth + " century.";
+          document.getElementById("result").innerHTML = personsName + " was born in " + centuryOfBirth + ". century.";
         }
 
         else if (yearOfBirth === "0") {
-          document.getElementById("result").innerHTML = personsName + " was born in 1 century.";
+          document.getElementById("result").innerHTML = personsName + " was born in 1. century.";
         }
 
         else if (yearOfBirth < 0) {
           let centuryOfBirth = (Math.floor((yearOfBirth - 100) / 100)) + 1;
-          document.getElementById("result").innerHTML = personsName + " was born in " + centuryOfBirth + " century.";
+          document.getElementById("result").innerHTML = personsName + " was born in " + centuryOfBirth + ". century.";
         }
 
         else {
-          document.getElementById("result").innerHTML = "Year of birth should be a number";
+          document.getElementById("result").innerHTML = "Year of birth should be a number.";
         }
       }
       else { document.getElementById("result").innerHTML = "Name is too short."; }
